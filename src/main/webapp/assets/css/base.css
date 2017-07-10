@@ -1,0 +1,264 @@
+/*
+ * 不正常航班服务保障管理系统 基础层叠样式表
+ * zhangkaihua
+ */
+
+body, button, img, input, ol, textarea, ul {
+    font-size: 12px;
+    font-family: Helvetica Neue, Tahoma, Arial, "Microsoft Yahei", "黑体", "宋体";
+    color: #333;
+    line-height: 1.5
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+    -webkit-text-size-adjust: none
+}
+
+img {
+    border: 0
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+a:focus {
+    outline: 0;
+    -moz-outline: 0
+}
+
+input, textarea {
+    outline: 0
+}
+
+.clear {
+    clear: both;
+    visibility: hidden;
+    border-top: 0;
+    margin-top: -1px !important
+}
+
+.right {
+    float: right !important
+}
+
+.boderRadAll_3 {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px
+}
+
+.hidden {
+    display: none;
+}
+
+/**/
+body {
+    background-color: #eFf2f8;
+}
+
+/* header bar */
+
+nav.header {
+    width: 100%;
+    padding: 15px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #d7d8da
+}
+
+nav.header .container-fluid {
+    width: 1000px;
+}
+
+nav.header .navbar-brand h3,
+nav.header .navbar-brand h3:hover {
+    color: #0066CC;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0;
+    line-height: 1;
+    float: left;
+}
+
+nav.header .navbar-brand {
+    padding: 10px 0 0 0;
+}
+
+nav.header .navbar-brand .sysName {
+    color: #0066CC;
+    font-size: 14px;
+    float: left;
+    padding: 16px 0 0 15px;
+}
+
+nav.header .content {
+    width: 980px;
+    margin: 0 auto;
+    padding: 0 10px
+}
+
+.header .headerBtn {
+    border: 1px solid #BBB;
+    line-height: 20px;
+    padding: 10px 17px;
+    text-align: center;
+    color: #AAA;
+    cursor: pointer;
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 14px
+}
+
+/* 登录框 */
+.loginWrap {
+    width: 400px;
+    margin: 70px auto auto;
+    border: 0 solid #e0e1e5;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px 2px rgba(0, 0, 0, .05), 0 5px 20px 4px rgba(0, 0, 0, .05);
+    -weblit-box-shadow: 0 3px 10px 2px rgba(0, 0, 0, .05), 0 5px 20px 4px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 3px 10px 2px rgba(0, 0, 0, .05), 0 5px 20px 4px rgba(0, 0, 0, .05);
+    -ms-box-shadow: 0 3px 10px 2px rgba(0, 0, 0, .05), 0 5px 20px 4px rgba(0, 0, 0, .05)
+
+}
+
+.loginWrap .loginForm {
+    padding: 30px;
+}
+
+.loginWrap .alert {
+    padding: 7px 17px;
+    line-height: 20px;
+    background-clip: padding-box
+}
+
+.Gray_c {
+    color: #a1a1a1 !important
+}
+
+.loginWrap .input-group {
+    width: 100%;
+    background-color: #FFF;
+    margin-bottom: 20px;
+}
+
+.loginWrap .input-group .input-group-addon,
+.loginWrap .input-group .form-control {
+    box-shadow: none;
+    height: 40px;
+    font-size: 16px;
+}
+
+.loginWrap .loginBtn a,
+.loginWrap .loginBtn a:hover {
+    width: 100%;
+    height: 44px;
+    background-color: #2d8eed;
+    font-size: 14px;
+    border: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 12px;
+}
+
+.loginWrap .forgetPass {
+    float: right;
+    margin-top: 10px;
+}
+
+#captchaImg {
+    margin-left: 4px;
+    width: 120px;
+    height: 40px;
+}
+
+.loginWrap .inputDiv .passwordNotice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 44px;
+    line-height: 44px;
+    width: 100%;
+    text-indent: 40px;
+    font-size: 12px;
+    color: #a1a1a1;
+    cursor: text;
+    -webkit-tap-highlight-color: transparent
+}
+
+.loginWrap .inputDiv .changeLoginType {
+    position: absolute;
+    top: 0;
+    line-height: 44px;
+    right: 10px;
+    cursor: pointer;
+    color: #2d8eed;
+    z-index: 21
+}
+
+.loginWrap .validateCodeDiv {
+    width: 50%
+}
+
+.loginWrap .valideCodeImg {
+    line-height: 44px
+}
+
+.loginWrap .valideCodeImg img {
+    height: 37px;
+    width: 100px;
+    margin: 0 10px
+}
+
+.loginWrap .loginDiv {
+    margin-top: 5px
+}
+
+.loginWrap .loginDiv .btnLogin {
+    background-color: #2d8eed;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    height: 44px;
+    cursor: pointer
+}
+
+.loginWrap .cbRememberPasswordDiv {
+    color: #666;
+    line-height: 15px;
+    cursor: pointer
+}
+
+.loginWrap .cbRememberPasswordDiv .cb {
+    margin-right: 5px;
+    float: left
+}
+
+.loginContainer .showPasswordIcon {
+    height: 44px;
+    line-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    right: 10px;
+    top: 0
+}

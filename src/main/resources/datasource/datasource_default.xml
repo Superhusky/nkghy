@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <!-- 数据源配置 -->
+    <bean id="dataSourceDefault" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <!-- 配置JDBC连接URL -->
+        <property name="url" value="${default.url}"/>
+        <!-- 配置数据库用户名 -->
+        <property name="username" value="${default.username}"/>
+        <!-- 配置数据库密码 -->
+        <property name="password" value="${default.password}"/>
+        <!-- 配置连接池初始值 -->
+        <property name="initialSize" value="${default.initialSize}"/>
+        <!-- 配置连接池最大值 -->
+        <property name="maxActive" value="${default.maxActive}"/>
+        <!-- 配置连接池最小值 -->
+        <property name="minIdle" value="${default.minIdle}"/>
+        <!-- 配置一个连接在池中最小生存的时间 -->
+        <property name="minEvictableIdleTimeMillis" value="${default.minEvictableIdleTimeMillis}"/>
+        <!-- 配置间隔多久才进行一次检测 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${default.timeBetweenEvictionRunsMillis}"/>
+        <!-- 用来检测连接是否有效的SQL -->
+        <property name="validationQuery" value="${default.validationQuery}"/>
+        <!-- 建议配置为true,保证安全性 -->
+        <property name="testWhileIdle" value="${default.testWhileIdle}"/>
+        <!-- 申请连接时检测连接是否有效 -->
+        <property name="testOnBorrow" value="${default.testOnBorrow}"/>
+        <!-- 归还连接时检测连接是否有效 -->
+        <property name="testOnReturn" value="${default.testOnReturn}"/>
+        <!-- 配置监控统计拦截的filters -->
+        <property name="proxyFilters" ref="statfilter"/>
+        <!-- 数据库监控，及日志配置 -->
+        <property name="filters" value="${default.filters}"/>
+    </bean>
+
+    <bean id="statfilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <!--慢SQL统计,如果SQL执行时间超过一定时间则记录为慢SQL  -->
+        <property name="slowSqlMillis" value="1000"/>
+        <!--慢SQL统计日志输出  -->
+        <property name="logSlowSql" value="true"/>
+        <!-- 合并sql统计 -->
+        <property name="mergeSql" value="true"/>
+    </bean>
+
+    <!-- MyBatis拦截器 -->
+    <bean class="com.njkgkj.core.mvc.dao.OraclePaginationInterceptor" id="paginationInterceptor"/>
+
+    <!-- SessionFactory配置 -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="dataSourceDefault"/>
+        <property name="mapperLocations" value="classpath*:mybatis/**/*.mapper.xml"/>
+        <property name="plugins" ref="paginationInterceptor"/>
+    </bean>
+
+    <!-- 事务控制管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceDefault"/>
+    </bean>
+
+    <!-- spring声明式事务的配置，以下为spring的AOP事务管理的增强部分 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--Spring采用AOP进行事务控制,这里指定了业务逻辑层所有类的方法需要按txAdvice中配置的策略进行事务控制 -->
+    <aop:config>
+        <aop:pointcut expression="execution(* com.njkgkj.nkg_hy..service..*.*(..))" id="txPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+
+</beans>

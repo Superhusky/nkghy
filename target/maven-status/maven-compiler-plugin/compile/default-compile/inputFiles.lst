@@ -1,0 +1,12 @@
+D:\work\nkghy\src\main\java\com\njkgkj\core\mvc\handler\AppRequestMappingHandlerMapping.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\base\dao\BaseDao.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\service\IUserService.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\web\UserController.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\base\entity\PaginationEntity.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\service\impl\UserServiceImpl.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\dao\IUserDao.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\dao\impl\UserDaoImpl.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\user\entity\UserEntity.java
+D:\work\nkghy\src\main\java\com\njkgkj\core\mvc\dao\OraclePaginationInterceptor.java
+D:\work\nkghy\src\main\java\com\njkgkj\nkg_hy\common\web\CommonController.java
+D:\work\nkghy\src\main\java\com\njkgkj\core\mvc\dao\AbstractPaginationInterceptor.java
